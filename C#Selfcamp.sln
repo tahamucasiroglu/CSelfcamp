@@ -1,0 +1,145 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GithubElements", "GithubElements", "{314249E2-EE68-4735-9D09-14F8400D3B3B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Çözüm Öğeleri", "Çözüm Öğeleri", "{14D77F1B-C722-4785-9FB6-550163CA5DEC}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C_Sharp_GencayYildiz", "C_Sharp_GencayYildiz", "{0437EB4F-9B5D-47FF-A052-81C9B2D90887}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\README.md = C_Sharp_GencayYildiz\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D040C566-29F3-4F2B-A3D7-6889BD893D47}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Kodlar", "C_Sharp_GencayYildiz\Kodlar\Kodlar.csproj", "{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Breakpoint", "Breakpoint", "{4F5E691C-3341-472F-9494-001D74093726}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Breakpoint\Breakpoint.md = C_Sharp_GencayYildiz\Documents\Breakpoint\Breakpoint.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Degiskenler", "Degiskenler", "{6BC9CB5A-A29B-423C-BD9E-C53D05CBDF71}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Degiskenler\BilememKardeş.md = C_Sharp_GencayYildiz\Documents\Degiskenler\BilememKardeş.md
+		C_Sharp_GencayYildiz\Documents\Degiskenler\Bilemem_Kardeş.mp4 = C_Sharp_GencayYildiz\Documents\Degiskenler\Bilemem_Kardeş.mp4
+		C_Sharp_GencayYildiz\Documents\Degiskenler\Degiskenler.md = C_Sharp_GencayYildiz\Documents\Degiskenler\Degiskenler.md
+		C_Sharp_GencayYildiz\Documents\Degiskenler\Isprimitive.png = C_Sharp_GencayYildiz\Documents\Degiskenler\Isprimitive.png
+		C_Sharp_GencayYildiz\Documents\Degiskenler\TipDegisimi.png = C_Sharp_GencayYildiz\Documents\Degiskenler\TipDegisimi.png
+		C_Sharp_GencayYildiz\Documents\Degiskenler\tuple.png = C_Sharp_GencayYildiz\Documents\Degiskenler\tuple.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Donguler", "Donguler", "{CDB55F02-9C49-4731-845B-5B2FB637FFD5}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Donguler\Donguler.md = C_Sharp_GencayYildiz\Documents\Donguler\Donguler.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DotnetCLI", "DotnetCLI", "{058D0112-936D-4D68-B697-D8F319FB24F5}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\DotnetCLI\DotnetCLI.md = C_Sharp_GencayYildiz\Documents\DotnetCLI\DotnetCLI.md
+		C_Sharp_GencayYildiz\Documents\DotnetCLI\dotnet_new.png = C_Sharp_GencayYildiz\Documents\DotnetCLI\dotnet_new.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GenelKonular", "GenelKonular", "{D14BEB0A-BA02-4823-9123-50B453A1A29F}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\GenelKonular\GenelKonular.md = C_Sharp_GencayYildiz\Documents\GenelKonular\GenelKonular.md
+		C_Sharp_GencayYildiz\Documents\GenelKonular\uint.png = C_Sharp_GencayYildiz\Documents\GenelKonular\uint.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "HataDurumları", "HataDurumları", "{FE993BF8-FAB7-40C3-BF88-9494E7B2C2A7}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\HataDurumları\HataDurumları.md = C_Sharp_GencayYildiz\Documents\HataDurumları\HataDurumları.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "If-else", "If-else", "{610E8264-7E9E-4A1E-BE3A-E378739DB9B5}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\If-else\If-else.md = C_Sharp_GencayYildiz\Documents\If-else\If-else.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Keywordler", "Keywordler", "{30DC5B76-A91F-47FE-B941-910EC2884365}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Keywordler\checked1.png = C_Sharp_GencayYildiz\Documents\Keywordler\checked1.png
+		C_Sharp_GencayYildiz\Documents\Keywordler\checked2.png = C_Sharp_GencayYildiz\Documents\Keywordler\checked2.png
+		C_Sharp_GencayYildiz\Documents\Keywordler\checked3.png = C_Sharp_GencayYildiz\Documents\Keywordler\checked3.png
+		C_Sharp_GencayYildiz\Documents\Keywordler\checked4.png = C_Sharp_GencayYildiz\Documents\Keywordler\checked4.png
+		C_Sharp_GencayYildiz\Documents\Keywordler\Keywordler.md = C_Sharp_GencayYildiz\Documents\Keywordler\Keywordler.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PatternMaching", "PatternMaching", "{27EA2905-4C88-415A-9674-929C38F290B4}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\PatternMaching\PatternMaching.md = C_Sharp_GencayYildiz\Documents\PatternMaching\PatternMaching.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Switch-case", "Switch-case", "{973AC446-12C9-4FA7-A6C3-1BC59084C823}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Switch-case\Switch-case.md = C_Sharp_GencayYildiz\Documents\Switch-case\Switch-case.md
+		C_Sharp_GencayYildiz\Documents\Switch-case\switch.png = C_Sharp_GencayYildiz\Documents\Switch-case\switch.png
+		C_Sharp_GencayYildiz\Documents\Switch-case\switch2.png = C_Sharp_GencayYildiz\Documents\Switch-case\switch2.png
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Temel_ilkeler", "Temel_ilkeler", "{024CCB71-81D3-4680-83B9-E2B1FBA5AA0D}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Temel_ilkeler\Temel_ilkeler.md = C_Sharp_GencayYildiz\Documents\Temel_ilkeler\Temel_ilkeler.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Todo_Kullanimi", "Todo_Kullanimi", "{928EDA97-7464-4C1F-94A6-3B71EC6F5F54}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Todo_Kullanimi\Todo_Kullanimi.md = C_Sharp_GencayYildiz\Documents\Todo_Kullanimi\Todo_Kullanimi.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TopLevelStatements", "TopLevelStatements", "{CAB24FB7-72FE-4563-BA44-60FB9C585F7B}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\TopLevelStatements\TopLevelStatements.md = C_Sharp_GencayYildiz\Documents\TopLevelStatements\TopLevelStatements.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Yorum_Satırları", "Yorum_Satırları", "{F8569707-5C12-43D0-B3FC-B15B2DB754AA}"
+	ProjectSection(SolutionItems) = preProject
+		C_Sharp_GencayYildiz\Documents\Yorum_Satırları\EkBilgiYorumu1.png = C_Sharp_GencayYildiz\Documents\Yorum_Satırları\EkBilgiYorumu1.png
+		C_Sharp_GencayYildiz\Documents\Yorum_Satırları\regionA.png = C_Sharp_GencayYildiz\Documents\Yorum_Satırları\regionA.png
+		C_Sharp_GencayYildiz\Documents\Yorum_Satırları\regionB.png = C_Sharp_GencayYildiz\Documents\Yorum_Satırları\regionB.png
+		C_Sharp_GencayYildiz\Documents\Yorum_Satırları\Yorum_Satırları.md = C_Sharp_GencayYildiz\Documents\Yorum_Satırları\Yorum_Satırları.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OOP", "OOP", "{516E7D2E-0951-4C90-A503-26A6648A1FD3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D040C566-29F3-4F2B-A3D7-6889BD893D47} = {0437EB4F-9B5D-47FF-A052-81C9B2D90887}
+		{B101F80B-E9BE-43A7-A6BE-0E078AF2E5D6} = {0437EB4F-9B5D-47FF-A052-81C9B2D90887}
+		{4F5E691C-3341-472F-9494-001D74093726} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{6BC9CB5A-A29B-423C-BD9E-C53D05CBDF71} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{CDB55F02-9C49-4731-845B-5B2FB637FFD5} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{058D0112-936D-4D68-B697-D8F319FB24F5} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{D14BEB0A-BA02-4823-9123-50B453A1A29F} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{FE993BF8-FAB7-40C3-BF88-9494E7B2C2A7} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{610E8264-7E9E-4A1E-BE3A-E378739DB9B5} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{30DC5B76-A91F-47FE-B941-910EC2884365} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{27EA2905-4C88-415A-9674-929C38F290B4} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{973AC446-12C9-4FA7-A6C3-1BC59084C823} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{024CCB71-81D3-4680-83B9-E2B1FBA5AA0D} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{928EDA97-7464-4C1F-94A6-3B71EC6F5F54} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{CAB24FB7-72FE-4563-BA44-60FB9C585F7B} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+		{F8569707-5C12-43D0-B3FC-B15B2DB754AA} = {D040C566-29F3-4F2B-A3D7-6889BD893D47}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {71D34190-08F7-41B7-A13B-14E748633C1C}
+	EndGlobalSection
+EndGlobal
