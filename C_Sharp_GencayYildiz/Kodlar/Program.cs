@@ -128,7 +128,14 @@
         //Console.WriteLine(5);
         #endregion
 
+        #region Yield
 
+        //foreach (var arg in new YieldTest().GetFib(15))
+        //{
+        //    Console.WriteLine(arg);
+        //}
+
+        #endregion
 
 
 
@@ -208,6 +215,22 @@
         }
 
         public static explicit operator TESTA(string name) => new TESTA() { Id = 0, Name = name };
+    }
+
+
+    public class YieldTest
+    {
+        int a=1,b=1;
+        public IEnumerable<int> GetFib(int len)
+        {
+            for (int i = 0; i < len; i++)
+            {
+                yield return a + b;
+                int temp = a;
+                a += b;
+                b = temp;
+            }
+        }
     }
 }
 

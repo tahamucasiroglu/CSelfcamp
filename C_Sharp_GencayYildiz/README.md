@@ -66,7 +66,7 @@
 &nbsp; &nbsp; &nbsp; &nbsp; 13.11 -) [File](Documents\Keywordler\Keywordler.md###file)<br>
 &nbsp; &nbsp; &nbsp; &nbsp; 13.12 -) [Patial](Documents\Keywordler\Keywordler.md###patial)<br>
 &nbsp; &nbsp; &nbsp; &nbsp; 13.13 -) [Record](Documents\Keywordler\Keywordler.md###record)<br>
-
+&nbsp; &nbsp; &nbsp; &nbsp; 13.14 -) [Yield](Documents\Keywordler\Keywordler.md###yield)<br>
 
 14 -) [Genel Konular](Documents\GenelKonular\GenelKonular.md)<br>
 &nbsp; &nbsp; &nbsp; &nbsp; 14.1 -) [`Async Main` Yöntemin](Documents\GenelKonular\GenelKonular.md###async-main)<br>

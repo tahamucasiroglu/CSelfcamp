@@ -18,7 +18,7 @@ Keywordler Programlama dilinin temelidir.<br>
 * [File](###file)
 * [Patial](###patial)
 * [Record](###record)
-
+* [Yield](###yield)
 
 
 ### Explicit ve Implicit
@@ -246,6 +246,34 @@ class C : B -> hata verir
 ```
 bu kadar derin bir olayý yok. Yani **benim bildiðim** yok
 
+**Meðersem varmýþ.** Methodda da kullanýlýyormuþ. Ýnceleyelim.<br>
+
+`A, B` ve `C` sýnýflarýmýz olsun. 
+
+```
+class A
+{
+    public virtual void X(){Console.WriteLine("Ben A'yým");}
+}
+
+class B : A
+{
+    sealed public override void X(){Console.WriteLine("Ben B'yým");}
+}
+
+class C : B
+{
+    public virtual void X(){Console.WriteLine("Ben C'yým");}
+}
+```
+
+þimdi yukarýdaki koda bakarsak `A` -> `B` -> `C` sýralamasýnda miras alma var. Normalde `X` methodu `override` edilebilirdir ve hepsi kendi methodunu yazarak `A`'nýn methodunu baskýlardý. Nerede lazým olur bilmem fakat siz `virtual` olan bir fonksiyonu `override` ettikten sonra miras verdiðiniz yerlerde bunu `override` etmesin diyorsanýz fonksiyon baþýna `sealed` koyarsýnýz.
+
+
+
+
+
+
 ### Volatile
 
 [Lock](###lock) kýsmýnda anlattýðýmýz mantýðýn tam tersi. `volatile` ile iþaretlenen bir alanýn ayný anda yürütülen birden çok kod parçacýðý tarafýndan deðiþtirilebileceðini belirtir. 100 `thread`'de ayný anda buna deðer gönderebilir yani. Bir nevi [`Race Condation`](https://medium.com/@gokhansengun/race-condition-nedir-ve-nas%C4%B1l-%C3%B6nlenir-174e9ba3f567) durumlarýný engellemek için olduðunu anladým.[Ek bilgi için](https://medium.com/@gokhansengun/semaphore-mutex-ve-spinlock-nedir-ve-ne-i%C5%9Fe-yarar-ba552a17c03#:~:text=Farkl%C4%B1%20Thread'ler%20taraf%C4%B1ndan%20payla%C5%9F%C4%B1lan,b%C3%B6lgesi%20Critical%20Section%20olarak%20adland%C4%B1r%C4%B1l%C4%B1r.)  
@@ -339,6 +367,76 @@ public record Person
 ```
 
 Burada `Yöntem 2`'de `init` deme sebebimiz eðer `set` deseydik `record`'un anlamý kalmazdý. `init` ile sadece kurucu methoddan deðer verecem demek oluyorç.
+
+
+
+### Yield
+
+`python`'dan biliyorsanýz aynýsý bilmiyorsanýz. Olay þu siz `return` ile fonksiyonu tek seferde kullanýrdýnýz. `yield` ise fonksiyonu tek seferde çok kez kullanarak birden çok `return` almanýzý saðlar.
+<br>
+
+
+```
+public class YieldTest
+{
+    int a=1,b=1;
+    public IEnumerable<int> GetFib(int len)
+    {
+        for (int i = 0; i < len; i++)
+        {
+            yield return a + b;
+            int temp = a;
+            a += b;
+            b = temp;
+        }
+    }
+}
+```
+
+bu sýnýfý kullanmak için 
+```
+foreach (var arg in new YieldTest().GetFib(15)) 
+{
+    Console.WriteLine(arg);
+}
+```
+böyle yapabiliriz. Arada iþlemi bitirmek için ise `yield break;` kullanýlýr.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
