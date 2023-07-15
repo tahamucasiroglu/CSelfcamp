@@ -5,7 +5,7 @@
 * [Deconstruct Yapýsý](###deconstruct)
 * [Static Constructor Methodu](###static-constructor)
 * [Class vs Struct Tipleri](###class-vs-struct-tipleri)
-
+* [Interface](###interface)
 
 ### Ref Readonly Return Field
 
@@ -55,9 +55,28 @@ class MyClass
 Temeli bu kalanlarýn hepsi bu kavramdan dolayý ortaya çýkar. En azýndan benim gördüklerim. `class` daha performanslý. 
 
 
+### Interface
 
 
 
+normalde `interface`'ler bir iskeletti fakat yeni `C#`'da artýk `interface`'ler sadec `method` isimleri deðil artýk `method` gövdeside almakta ve bu gövdeli `method`'larý `sýnýf`'larýn içinde belirtmek zorunda deðil. 
+```
+interface Topla
+{
+	void Toplama(int x, int y)
+	{
+		Console.WriteLine(x+y);
+	}
+}
+
+class Sinif : Topla
+{
+	
+}
+```
+Normalde `Sinif` kýsmýnda hata vermesi gerekirken vermez çünkü `method`'un gövdesi var.
+
+<br>
 
 
 
