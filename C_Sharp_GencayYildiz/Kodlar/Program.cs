@@ -147,9 +147,9 @@
     }
     public class Student
     {
-        public string name;
-        public string surname;
-        public string alan;
+        public string name { get; set; } = "";
+        public string surname { get; set; } = "";
+        public string alan { get; set; } = "";
     }
 
     public record struct Point(int X, int Y)
