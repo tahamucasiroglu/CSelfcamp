@@ -1,4 +1,7 @@
 # NeDersinV2
+<br>
+
+## proje yarýda býrakýldý. staj için baþka projeye baþlnadý. buna sonra dönerim belkide muhtemelen dönmem
 
 
 Turkcell projesi sonrasý öðrenmeye devam için yeniden yapma. 
@@ -41,9 +44,15 @@ Performans notlarý
 
 
 Yapýlacaklar
-
+*** seeding kýsmýný optimize et 
 1-) survey için IsEnd kontrolünü querystring yap
 2-) ping için olan methoda gelen istekleri middleware ile direk en baþta geri döndür bu sayede adamlar en doðru pingi ölçsünler.
+3-) string kontrollerde regex yap
+4-) çoklu tablolardaki uðraþlarý sil viewlarý keþfettik
+5-) JWT ekle
+6-) istatistik kýsmýnda view ý çözünce yap
+7-) UI'i apiye baðýmlý yap. arkaplan rengi gibi þeyler apiden gelsin. hatta sayfayý apiden çekebilir.(fantezi)
+8-) db yi zorla
 
 
 

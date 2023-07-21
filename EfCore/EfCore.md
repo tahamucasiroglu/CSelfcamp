@@ -4,6 +4,9 @@
 * [Code First](###codefirst)
 * [Query Tags](###query-tags)
 * [Global Query Filters](###global-query-filters)
+* [IQuesyable ve IEnumerable](###iquesyable-ve-ienumerable)
+* [Deferrend Execution](###deferrend-execution)
+* [Sorgular](###sorgular)
 * [Sorgu Kalitesi](###sorgu-kalitesi)
 * [ExecuteUpdate ve ExecuteDelete Ýþlemleri](###executeupdate-ve-executedelete)
 * [Kayýt alma](###kayit-alma)
@@ -46,6 +49,31 @@ yukarýdaki örnekte global filtre tanýmlayarak artýk her insan tablosu sorgulandý
 eðer bunu sonradan kullanmadan sorgulamak istersek.<br>
 `context.Persons.IgnoreQueryFilters().methodlar..`<br>
 þelinde ön tanýmlý filtreleri iptal edebilirsiinz.
+
+### IQuesyable ve IEnumerable
+`IQueryable` sorguya karþýlýk gelir. Efcore üzerinde yapýlmýþ sorgunun execute edilmemiþ hali demektir.
+<br>
+`IEnumerable` ise execute edilmiþ memorydeki halidir.
+
+### Deferrend Execution 
+yaptýðýn sorgularda parametre deðerleri sonradan deðiþirse ve sen sorguyu sonradan execute edersen güncel parametreye göre sorgu çeker. örneðin
+
+![Resim Yok](deferrend_execution.png)
+
+burada id yi 5 ten büyük deðil 200 den biyik olanlarý getirir.
+
+### Sorgular
+
+`ThenBy` -> orderby sorgusunu çoðaltmak için kullanýlýr.<br>
+`OrderByDescending` -> orderby in tersi büyükten küçüðe yani<br>
+`ThenByDescending` -> ek olarak tersine sorgula<br>
+`Any` -> sorgu sonucu veri geliyor mu gelmiyor mu <br>
+`All` -> tüm veriler þarta uyarsa true döner aksi halde false<br>
+`GroupBy` -> gruplar adý üzerinde verilen duruma göre gruplar<br>
+
+### Change Tracker
+
+`SaveChangesAsync(false)` þeklinde kullanýmda kaydedilen verilerin takibi devam eder.
 
 
 ### Sorgu Kalitesi
@@ -90,7 +118,42 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 þekline `.LogTo` methodundan yararlanabilirsiniz. bu `Konsol`'a info ve üstü bilgileri basar. [`Query Tags`](###query-tags) kullanarakta bunlara bilgi gömebilirisiniz. 
 
 
+``` 
+kendime not yorum ekle böyle
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Blog>()
+        .Property(b => b.Url)
+        .HasComment("The URL of the blog");
+}
 
+
+start date gibi þeyleri hasvalue ile yap
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Blog>()
+        .Property(b => b.Created)
+        .HasDefaultValueSql("getdate()");
+}
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Blog>()
+        .Property(b => b.Rating)
+        .HasDefaultValue(3);
+}
+
+
+hazýrda belli verileri birleþtirerek tutmak 
+modelBuilder.Entity<Person>()
+    .Property(p => p.DisplayName)
+    .HasComputedColumnSql("[LastName] + ', ' + [FirstName]");
+
+
+
+
+```
 
 
 

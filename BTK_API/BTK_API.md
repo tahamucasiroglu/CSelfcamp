@@ -1,4 +1,10 @@
-# BTK Akedemi API Kursu
+# BTK Akedemi API Kursu Notlarý
+
+
+Patch controller kullanabilirsin react baðýnda tabi reacta baðlý
+
+
+
 
 
 

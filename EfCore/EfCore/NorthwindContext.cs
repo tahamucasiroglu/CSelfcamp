@@ -71,7 +71,8 @@ public partial class NorthwindContext : DbContext
     public virtual DbSet<Territory> Territories { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=Northwind; Trusted_Connection=True;");
+        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=Northwind; Trusted_Connection=True;")
+        .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

@@ -117,6 +117,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TSQL_SQL", "TSQL_SQL", "{89
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{D6F19028-2710-4D81-B1A9-1F92A1DA204C}"
 	ProjectSection(SolutionItems) = preProject
+		EfCore\deferrend_execution.png = EfCore\deferrend_execution.png
 		EfCore\EfCore.md = EfCore\EfCore.md
 		EfCore\EfCorescaffold.png = EfCore\EfCorescaffold.png
 	EndProjectSection
@@ -184,6 +185,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BTK_API", "BTK_API", "{CF55
 		BTK_API\BTK_API.md = BTK_API\BTK_API.md
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApp", "BTK_API\ProductApp\ProductApp.csproj", "{31302244-517A-4978-9461-2BA8B54463D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -238,6 +241,10 @@ Global
 		{B9749B65-A756-45F3-BA18-928239256E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9749B65-A756-45F3-BA18-928239256E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9749B65-A756-45F3-BA18-928239256E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31302244-517A-4978-9461-2BA8B54463D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31302244-517A-4978-9461-2BA8B54463D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31302244-517A-4978-9461-2BA8B54463D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31302244-517A-4978-9461-2BA8B54463D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -281,6 +288,7 @@ Global
 		{D0BE2FBA-EB5D-4AF7-8403-C92975A55432} = {2A694FA4-B544-415D-B309-8C2766FF6C96}
 		{BAF44F21-A017-4221-8433-B10ECE8E7BA6} = {2A694FA4-B544-415D-B309-8C2766FF6C96}
 		{47D90121-E505-4467-85C8-4AEA117390D0} = {BAF44F21-A017-4221-8433-B10ECE8E7BA6}
+		{31302244-517A-4978-9461-2BA8B54463D8} = {CF55A390-8E85-4093-9824-DAC3316A9256}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {71D34190-08F7-41B7-A13B-14E748633C1C}
