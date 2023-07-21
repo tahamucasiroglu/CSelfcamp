@@ -20,8 +20,8 @@ namespace NeDersinV2.Abstracts.Repository
         public IReturnModel<IEnumerable<Survey>> GetAllSurveyWithUser<Tout>(Expression<Func<Survey, bool>>? filter, Expression<Func<Survey, Tout>> order, Range Take = new());
         public Task<IReturnModel<IEnumerable<Survey>>> GetAllSurveyWithUserAsync(Expression<Func<Survey, bool>>? filter = null, Range Take = new());
         public Task<IReturnModel<IEnumerable<Survey>>> GetAllSurveyWithUserAsync<Tout>(Expression<Func<Survey, bool>>? filter, Expression<Func<Survey, Tout>> order, Range Take = new());
-        public IReturnModel<IEnumerable<TSelect>> GetByPagination<TOrder, TSelect>(Expression<Func<Survey, TSelect>> select, Expression<Func<Survey, bool>>? filter = null, Expression<Func<Survey, TOrder>>? order = null, bool Reserve = false, Range? TakeRange = null, Expression<Func<Survey, IEntity>>? include = null);
-        public Task<IReturnModel<IEnumerable<TSelect>>> GetByPaginationAsync<TOrder, TSelect>(Expression<Func<Survey, TSelect>> select, Expression<Func<Survey, bool>>? filter = null, Expression<Func<Survey, TOrder>>? order = null, bool Reserve = false, Range? TakeRange = null, Expression<Func<Survey, IEntity>>? include = null);
+        public IReturnModel<IEnumerable<TSelect>> GetByPagination<TOrder, TSelect>(Func<Survey, TSelect> select, Func<Survey, bool>? filter = null, Func<Survey, TOrder>? order = null, bool Reserve = false, Range? TakeRange = null, Expression<Func<Survey, IEntity>>? include = null);
+        public Task<IReturnModel<IEnumerable<TSelect>>> GetByPaginationAsync<TOrder, TSelect>(Func<Survey, TSelect> select, Func<Survey, bool>? filter = null, Func<Survey, TOrder>? order = null, bool Reserve = false, Range? TakeRange = null, Expression<Func<Survey, IEntity>>? include = null);
 
     }
 }

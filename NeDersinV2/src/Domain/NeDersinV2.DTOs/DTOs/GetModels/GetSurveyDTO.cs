@@ -7,7 +7,7 @@ namespace NeDersinV2.DTOs.DTOs.GetModels
 
         public int Id { get; init; }
 
-        public Guid Adress { get; init; }
+        public Guid Address { get; init; }
 
         public int UserId { get; init; }
 
@@ -24,5 +24,10 @@ namespace NeDersinV2.DTOs.DTOs.GetModels
         public int? MaxResponse { get; init; }
 
         public int? MinResponse { get; init; }
+        public int ResponseCount { get; set; }
+
+        public int ViewCount { get; set; }
+
+        public double Rating { get; set; }
     }
 }

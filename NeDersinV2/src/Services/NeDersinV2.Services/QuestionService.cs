@@ -41,12 +41,14 @@ namespace NeDersinV2.Services
 
         public IReturnModel<IEnumerable<GetQuestionDTO>> GetsBySurveyId(int surveyId)
         {
-            throw new NotImplementedException();
+            IReturnModel<IEnumerable<Question>> result = repository.GetAll(r => r.SurveyId == surveyId);
+            return ConvertToReturn<GetQuestionDTO, Question>(result, mapper);
         }
 
-        public Task<IReturnModel<IEnumerable<GetQuestionDTO>>> GetsBySurveyIdAsync(int surveyId)
+        public async Task<IReturnModel<IEnumerable<GetQuestionDTO>>> GetsBySurveyIdAsync(int surveyId)
         {
-            throw new NotImplementedException();
+            IReturnModel<IEnumerable<Question>> result = await repository.GetAllAsync(r => r.SurveyId == surveyId);
+            return ConvertToReturn<GetQuestionDTO, Question>(result, mapper);
         }
     }
 }

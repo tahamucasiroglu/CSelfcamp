@@ -174,55 +174,54 @@ namespace NeDersinV2.Services
 
         public IReturnModel<GetSurveyPaginationDTO> GetByPagination(int pageNumber, int pageSize, string order, string shortType)
         {
-            
+
             IReturnModel<int> count = repository.Count(r => !r.IsEnd);
             int totalCount = count.Status ? count.Data : 0;
             int totalPage = (int)Math.Ceiling((double)totalCount / pageSize);
-            int pageNum = pageNumber;
-            if (pageNum < 1) { pageNum = 1; }
-            if (pageNum > totalPage) { pageNum = totalPage; }
+            int pageNum = Math.Clamp(pageNumber, 1, totalPage);
             int start = (pageNum - 1) * pageSize;
-            int end = start + pageSize;
-            if (end > totalCount) { end = totalCount; }
+            int end = Math.Min(start + pageSize, totalCount);
+
 
             bool reserve = shortType == ShortTypeConst.DESC;
 
             IReturnModel<IEnumerable<GetSurveyPaginationListDTO>> result = order switch
             {
                 nameof(OrderTypeEnum.EndDate) => repository.GetByPagination(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.EndTime ?? DateTime.MinValue,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 nameof(OrderTypeEnum.ResponseCount) => repository.GetByPagination(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.ResponseCount,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 nameof(OrderTypeEnum.Rating) => repository.GetByPagination(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.Rating,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 _ => repository.GetByPagination(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.Date,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User)
             };
+            
             if (!result.Status) return new ErrorReturnModel<GetSurveyPaginationDTO>();
-            return new SuccessReturnModel<GetSurveyPaginationDTO>(new GetSurveyPaginationDTO(result.Data ?? new List<GetSurveyPaginationListDTO>(), order, shortType));
+            return result.Data == null ? new SuccessReturnModel<GetSurveyPaginationDTO>() : new SuccessReturnModel<GetSurveyPaginationDTO>(new GetSurveyPaginationDTO(result.Data, order, shortType, totalPage, pageSize));
         }
 
         public async Task<IReturnModel<GetSurveyPaginationDTO>> GetByPaginationAsync(int pageNumber, int pageSize, string order, string shortType)
@@ -231,51 +230,48 @@ namespace NeDersinV2.Services
             IReturnModel<int> count = await repository.CountAsync(r => !r.IsEnd);
             int totalCount = count.Status ? count.Data : 0;
             int totalPage = (int)Math.Ceiling((double)totalCount / pageSize);
-            int pageNum = pageNumber;
-            if (pageNum < 1) { pageNum = 1; }
-            if (pageNum > totalPage) { pageNum = totalPage; }
+            int pageNum = Math.Clamp(pageNumber, 1, totalPage);
             int start = (pageNum - 1) * pageSize;
-            int end = start + pageSize;
-            if (end > totalCount) { end = totalCount; }
+            int end = Math.Min(start + pageSize, totalCount);
 
             bool reserve = shortType == ShortTypeConst.DESC;
 
             IReturnModel<IEnumerable<GetSurveyPaginationListDTO>> result = order switch
             {
                 nameof(OrderTypeEnum.EndDate) => await repository.GetByPaginationAsync(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.EndTime ?? DateTime.MinValue,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 nameof(OrderTypeEnum.ResponseCount) => await repository.GetByPaginationAsync(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.ResponseCount,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 nameof(OrderTypeEnum.Rating) => await repository.GetByPaginationAsync(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.Rating,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User),
 
                 _ => await repository.GetByPaginationAsync(
-                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title),
+                    select: r => new GetSurveyPaginationListDTO(r.Address, r.UserId, r.User.Name + r.User.Surname, r.Title, r.Rating),
                     order: r => r.Date,
                     filter: r => !r.IsEnd,
                     Reserve: reserve,
-                    TakeRange: new Range(^start, ^end),
+                    TakeRange: new Range(start, end),
                     include: r => r.User)
             };
             if (!result.Status) return new ErrorReturnModel<GetSurveyPaginationDTO>();
-            return new SuccessReturnModel<GetSurveyPaginationDTO>(new GetSurveyPaginationDTO(result.Data ?? new List<GetSurveyPaginationListDTO>(), order, shortType));
+            return new SuccessReturnModel<GetSurveyPaginationDTO>(new GetSurveyPaginationDTO(result.Data ?? new List<GetSurveyPaginationListDTO>(), order, shortType, totalPage, pageSize));
         }
     }
 }

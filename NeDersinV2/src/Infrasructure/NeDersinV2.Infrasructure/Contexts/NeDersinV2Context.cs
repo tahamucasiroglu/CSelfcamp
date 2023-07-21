@@ -30,8 +30,10 @@ public partial class NeDersinV2Context : DbContext
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=NeDersinV2; Trusted_Connection=True;");
-
+        => optionsBuilder
+            .UseSqlServer("Server=(localdb)\\MSSQLLocalDB; Database=NeDersinV2; Trusted_Connection=True;")
+            .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+            
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.UseCollation("Turkish_CS_AS");

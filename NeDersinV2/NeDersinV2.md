@@ -36,7 +36,8 @@ VM lerdeki sealed larý kaldýrarak içine collectionlarý koy ve tekte anketi içler
 -*-*
 
 
-
+Performans notlarý
+* Toplu eklemede `AddRange` kullanýn. Tek bir deðer eklemede `SaveChanges` 140 ms civarý sürerken 100 deðer eklemede 147 ms civarý sürmekte. Tablo baðlýlýklarý ve kolon sayýsý gibi þeylerde, hatta tablodaki veri sayýsý ile deðiþir ama toplu ekleme her zaman daha iyi
 
 
 Yapýlacaklar

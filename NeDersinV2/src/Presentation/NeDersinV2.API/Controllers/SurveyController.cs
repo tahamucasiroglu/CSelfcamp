@@ -14,7 +14,7 @@ using NeDersinV2.DTOs.ViewModels.Survey;
 
 namespace NeDersinV2.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class SurveyController : CustomBaseController<VM_Create_Survey, VM_Update_Survey, GetSurveyDTO>
     {
@@ -38,5 +38,23 @@ namespace NeDersinV2.API.Controllers
 
             return StaticHelperMethods.SolveResult(result, hateoasModel);
         }
+
+        [HttpGet("[action]")]
+        [ServiceFilter(typeof(LogFilterAttribute))]
+        //[Authorize]
+        public IActionResult GetSurveysForPage([FromBody] VM_IntValue Value)
+        {
+            if (!ModelState.IsValid) return ModelStateNonValid<VM_IntValue>(nameof(GetSurveyById));
+
+            var result = surveyService.GetById(Value.Value);
+
+            LogResultError(result);
+
+            return StaticHelperMethods.SolveResult(result, hateoasModel);
+        }
+
+
+
+
     }
 }

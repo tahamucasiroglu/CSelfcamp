@@ -86,33 +86,33 @@ namespace NeDersinV2.Infrasructure.Repository.EfCore
         }
 
         public IReturnModel<IEnumerable<TSelect>> GetByPagination<TOrder, TSelect>(
-            Expression<Func<Survey, TSelect>> select,
-            Expression<Func<Survey, bool>>? filter = null, 
-            Expression<Func<Survey, TOrder>>? order = null, 
+            Func<Survey, TSelect> select,
+            Func<Survey, bool>? filter = null, 
+            Func<Survey, TOrder>? order = null, 
             bool Reserve = false, Range? TakeRange = null, 
             Expression<Func<Survey, IEntity>>? include = null)
         {
-            IQueryable<Survey> result = (include == null) ? context.Surveys.AsQueryable() : context.Surveys.Include(include);
+            IEnumerable<Survey> result = (include == null) ? context.Surveys.AsNoTracking() : context.Surveys.Include(include).AsNoTracking();
             if (filter != null) result = result.Where(filter);
             if (order != null) result = result.OrderBy(order);
             if (TakeRange != null) result = result.Take(TakeRange.Value);
             if (Reserve) result = result.Reverse();
-            return new SuccessReturnModel<IEnumerable<TSelect>>(result.Select(select));
+            return CheckIsNull(result.Select(select));
         }
 
         public async Task<IReturnModel<IEnumerable<TSelect>>> GetByPaginationAsync<TOrder, TSelect>(
-            Expression<Func<Survey, TSelect>> select,
-            Expression<Func<Survey, bool>>? filter = null,
-            Expression<Func<Survey, TOrder>>? order = null,
+            Func<Survey, TSelect> select,
+            Func<Survey, bool>? filter = null,
+            Func<Survey, TOrder>? order = null,
             bool Reserve = false, Range? TakeRange = null,
             Expression<Func<Survey, IEntity>>? include = null)
         {
-            IQueryable<Survey> result = (include == null) ? context.Surveys.AsQueryable() : context.Surveys.Include(include);
+            IEnumerable<Survey> result = (include == null) ? context.Surveys.AsQueryable() : context.Surveys.Include(include);
             if (filter != null) result = result.Where(filter);
             if (order != null) result = result.OrderBy(order);
             if (TakeRange != null) result = result.Take(TakeRange.Value);
             if (Reserve) result = result.Reverse();
-            return await Task.FromResult(new SuccessReturnModel<IEnumerable<TSelect>>(result.Select(select)));
+            return await Task.FromResult(CheckIsNull<IEnumerable<TSelect>>(result.Select(select)));
         }
     }
 }

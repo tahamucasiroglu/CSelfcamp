@@ -7,13 +7,11 @@ using NeDersinV2.API.HateoasModels;
 using NeDersinV2.API.StaticMethods;
 using NeDersinV2.DTOs.DTOs.GetModels;
 using NeDersinV2.DTOs.ViewModels;
-using NeDersinV2.DTOs.ViewModels.Response;
 using NeDersinV2.DTOs.ViewModels.SurveyRating;
-using Newtonsoft.Json.Linq;
 
 namespace NeDersinV2.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("/[controller]")]
     [ApiController]
     public class SurveyRatingController : CustomBaseController<VM_Create_SurveyRating, GetSurveyRatingDTO>
     {

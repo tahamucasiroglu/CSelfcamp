@@ -1,6 +1,5 @@
 ﻿using NeDersinV2.Abstracts.Repository;
 using NeDersinV2.Abstracts.Service;
-using NeDersinV2.API.HateoasModels;
 using NeDersinV2.Infrasructure.Repository.EfCore;
 using NeDersinV2.Services;
 
@@ -10,6 +9,7 @@ namespace NeDersinV2.API.Extensions
     {
         public static void AddScoped(this WebApplicationBuilder builder)
         {
+
             builder.Services.AddScoped<IAnswerRepository, EfAnswerRepository>();
             builder.Services.AddScoped<IQuestionRepository, EfQuestionRepository>();
             builder.Services.AddScoped<IResponseRepository, EfResponseRepository>();
@@ -24,7 +24,7 @@ namespace NeDersinV2.API.Extensions
             builder.Services.AddScoped<ISurveyService, SurveyService>();
             builder.Services.AddScoped<IUserService, UserService>();
 
-            builder.Services.AddScoped<HateoasModel>();
+            
         }
     }
 }
