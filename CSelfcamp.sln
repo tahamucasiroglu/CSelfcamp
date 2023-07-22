@@ -120,6 +120,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "EfCore", "EfCore", "{D6F190
 		EfCore\deferrend_execution.png = EfCore\deferrend_execution.png
 		EfCore\EfCore.md = EfCore\EfCore.md
 		EfCore\EfCorescaffold.png = EfCore\EfCorescaffold.png
+		EfCore\sequence.png = EfCore\sequence.png
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfCore", "EfCore\EfCore\EfCore.csproj", "{55377E22-33D1-431D-8104-12B3CEA8709A}"
@@ -172,6 +173,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NeDersinV2.Extensions", "Ne
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FlutterClientExe", "FlutterClientExe", "{D0BE2FBA-EB5D-4AF7-8403-C92975A55432}"
 	ProjectSection(SolutionItems) = preProject
+		NeDersinV2\src\Presentation\FlutterClientExe\FlutterClientExe.7z = NeDersinV2\src\Presentation\FlutterClientExe\FlutterClientExe.7z
 		NeDersinV2\src\Presentation\FlutterClientExe\flutter_windows.dll = NeDersinV2\src\Presentation\FlutterClientExe\flutter_windows.dll
 		NeDersinV2\src\Presentation\FlutterClientExe\nedersin.exe = NeDersinV2\src\Presentation\FlutterClientExe\nedersin.exe
 	EndProjectSection
@@ -185,7 +187,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BTK_API", "BTK_API", "{CF55
 		BTK_API\BTK_API.md = BTK_API\BTK_API.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApp", "BTK_API\ProductApp\ProductApp.csproj", "{31302244-517A-4978-9461-2BA8B54463D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProductApp", "BTK_API\ProductApp\ProductApp.csproj", "{31302244-517A-4978-9461-2BA8B54463D8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
