@@ -5,20 +5,20 @@ Keywordler Programlama dilinin temelidir.<br>
 
 
 
-* [Explicit ve Implicit](###explicit-ve-implicit)
-* [Checked](###checked)
-* [Extern ](###extern )
-* [Lock](###lock)
-* [Params](###params)
-* [Ref](###ref)
-* [Stackalloc](###stackalloc)
-* [Unsafe ](###unsafe )
-* [Sealed](###sealed)
-* [Volatile](###volatile)
-* [File](###file)
-* [Patial](###patial)
-* [Record](###record)
-* [Yield](###yield)
+* [Explicit ve Implicit](#explicit-ve-implicit)
+* [Checked](#checked)
+* [Extern ](#extern )
+* [Lock](#lock)
+* [Params](#params)
+* [Ref](#ref)
+* [Stackalloc](#stackalloc)
+* [Unsafe ](#unsafe )
+* [Sealed](#sealed)
+* [Volatile](#volatile)
+* [File](#file)
+* [Patial](#patial)
+* [Record](#record)
+* [Yield](#yield)
 
 
 ### Explicit ve Implicit

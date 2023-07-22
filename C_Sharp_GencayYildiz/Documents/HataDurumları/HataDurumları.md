@@ -2,10 +2,10 @@
 
 3 tür hata vardýr.
 
-* [Derleyici / Söz Dizimi Hatalarý](###derleyici-hatasi)
-* [Runtime / Çalýþma Zamaný Hatalarý](###runtime-hatasi)
-* [Try-Catch](###try-catch)
-* [Mantýksal Hatalarý](###mantiksal-hata)
+* [Derleyici / Söz Dizimi Hatalarý](#derleyici-hatasi)
+* [Runtime / Çalýþma Zamaný Hatalarý](#runtime-hatasi)
+* [Try-Catch](#try-catch)
+* [Mantýksal Hatalarý](#mantiksal-hata)
 
 
 ### Derleyici Hatasi

@@ -1,11 +1,11 @@
 # Pattern Maching
 
-* [Type Pattern](###type-pattern)
-* [Custom Pattern](###custom-pattern)
-* [Var Pattern](###var-pattern)
-* [Recursive Pattern](###recursive-pattern)
-* [Simple Type Pattern](###simple-type-pattern)
-* [Relational Pattern](###relational-pattern)
+* [Type Pattern](#type-pattern)
+* [Custom Pattern](#custom-pattern)
+* [Var Pattern](#var-pattern)
+* [Recursive Pattern](#recursive-pattern)
+* [Simple Type Pattern](#simple-type-pattern)
+* [Relational Pattern](#relational-pattern)
 
 ### Type Pattern
 

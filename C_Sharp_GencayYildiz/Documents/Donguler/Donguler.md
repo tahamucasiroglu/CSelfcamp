@@ -2,10 +2,10 @@
 
 Ardýþýk iþlemler için kullanýlýr.
 
-* [For Döngüsü](###for-dongusu)
-* [While Döngüsü](###while-dongusu)
-* [Do While Döngüsü](###do-while-dongusu)
-* [Foreach Döngüsü](###foreach-dongusu)
+* [For Döngüsü](#for-dongusu)
+* [While Döngüsü](#while-dongusu)
+* [Do While Döngüsü](#do-while-dongusu)
+* [Foreach Döngüsü](#foreach-dongusu)
 
 
 

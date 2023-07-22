@@ -2,9 +2,9 @@
 
 `Switch-Case` ile kullaným anlatýmý ypamayacam bazý genel dýþý teknikleri yazacaðým<br>
 
-* [When](###when-sarti)
-* [Goto](###goto)
-* [Switch Experssions](###switch-experssions)
+* [When](#when-sarti)
+* [Goto](#goto)
+* [Switch Experssions](#switch-experssions)
 
 
 ### When sarti

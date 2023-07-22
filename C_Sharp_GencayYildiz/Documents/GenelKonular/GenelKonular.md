@@ -1,19 +1,19 @@
 # Genel Konular
 
-* [`Async Main` Yöntemin](###async-main)
-* [Aramalarda `Tupple` ile Çoklu Seçenekler](###tupple)
-* [Baþlangýç ve Bitiþ Olan Ýþlemleri Kolaylaþtýran `Range` Tipi](###range)
-* [Partiallar](###partial)
-* [Native Int](###nint)
-* [Paragraf String](###paragraf-string)
-* [Span ve memory](###span-ve-memory)
-* [Regular Expressions](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [^ Operatörü](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [\ Operatörü](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [+ Operatörü](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [| Operatörü](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [\{ n \} Operatoru](###regular-expressions)<br>
-&nbsp; &nbsp; &nbsp; &nbsp; > [? Operatörü](###regular-expressions)<br>
+* [`Async Main` Yöntemin](#async-main)
+* [Aramalarda `Tupple` ile Çoklu Seçenekler](#tupple)
+* [Baþlangýç ve Bitiþ Olan Ýþlemleri Kolaylaþtýran `Range` Tipi](#range)
+* [Partiallar](#partial)
+* [Native Int](#nint)
+* [Paragraf String](#paragraf-string)
+* [Span ve memory](#span-ve-memory)
+* [Regular Expressions](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [^ Operatörü](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [\\ Operatörü](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [+ Operatörü](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [| Operatörü](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [\{ n \} Operatoru](#regular-expressions)<br>
+&nbsp; &nbsp; &nbsp; &nbsp; > [? Operatörü](#regular-expressions)<br>
 
 
 ### Async Main

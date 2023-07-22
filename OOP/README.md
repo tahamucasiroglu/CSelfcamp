@@ -1,11 +1,11 @@
 # OOP
 
-* [Ref Readonly Return Field Dönüþü](###ref-readonly-return-field)
-* [Inýt Field](###init)
-* [Deconstruct Yapýsý](###deconstruct)
-* [Static Constructor Methodu](###static-constructor)
-* [Class vs Struct Tipleri](###class-vs-struct-tipleri)
-* [Interface](###interface)
+* [Ref Readonly Return Field Dönüþü](#ref-readonly-return-field)
+* [Inýt Field](#init)
+* [Deconstruct Yapýsý](#deconstruct)
+* [Static Constructor Methodu](#static-constructor)
+* [Class vs Struct Tipleri](#class-vs-struct-tipleri)
+* [Interface](#interface)
 
 ### Ref Readonly Return Field
 

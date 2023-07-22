@@ -1,10 +1,10 @@
 # Deðiþkenler
 
-- [IsPrimitive](###isprimitive)
-- [Deðiþkenlerin Açýklamasý](###degiskenlerin-aciklamasi)
-- [Tuple](###tuple)
-- [var ve dynamic keyword'leri](###var-ve-dynamic)
-- [Tur Dönüsümü](###tur-donusumu)
+- [IsPrimitive](#isprimitive)
+- [Deðiþkenlerin Açýklamasý](#degiskenlerin-aciklamasi)
+- [Tuple](#tuple)
+- [var ve dynamic keyword'leri](#var-ve-dynamic)
+- [Tur Dönüsümü](#tur-donusumu)
 
 
 
