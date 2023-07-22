@@ -1,10 +1,10 @@
 # C# Çalýþma Notlarým
 burasý C# çalýþma notlarýmýn veya kodlarýmýn olduðu repodur.
 
-* [C# notlarý için týklayýn.(Gencayyildiz eðitiminden ve kendi araþtýrmalarýmdan notlar.)](C_Sharp_GencayYildiz\README.md)
-* [C# OOP Notlarým](OOP\README.md)
-* [Çok Çok Çok Çok Basit TSQL](TSQL_SQL\TSQL_SQL.md)
-* [Ef Core için Farklý Konular](EfCore\EfCore.md)
+* [C# notlarý için týklayýn.(Gencayyildiz eðitiminden ve kendi araþtýrmalarýmdan notlar.)](C_Sharp_GencayYildiz/README.md)
+* [C# OOP Notlarým](OOP/README.md)
+* [Çok Çok Çok Çok Basit TSQL](TSQL_SQL/TSQL_SQL.md)
+* [Ef Core için Farklý Konular](EfCore/EfCore.md)
 
 # Linkler
 * [Turkay Ürkmez Blog(Eski ama okunurluðu süren yazýlar var. Umarým tekrardan yazmaya baþlar. :D)](https://www.turkayurkmez.com/)
