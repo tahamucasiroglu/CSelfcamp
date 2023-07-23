@@ -22,11 +22,6 @@ burasý C# çalýþma notlarýmýn veya kodlarýmýn olduðu repodur.
 
 
 
-
-
-
-
-
 # Boþ zamanda ayrýntýsýna girmek istediklerim
 hem detaylýca araþtýrýp hemde derin noktalardan buraya yazmak istediklerim.
 * Thread

@@ -12,8 +12,18 @@
 * [Kayýt alma](#kayit-alma)
 * [Configs](#configs)
 * [Eager Loading](#eager-loading)
+* [Explicit Loading](#explicit-loading)
+* [Lazy loading](#lazy-loading)
+* [View Yapýsý](#view-yapisi)
+* [Stored Procedure](#stored-procedure)
+* [Scalar ve Inline Functions](#scalar-ve-inline-functions)
 * [Configleri Ayrý Kaydetme](#configleri-ayri-kaydetme)
 * [Kalýtýmsal Durumlar](#kalitimsal-durumlar)
+   * [TPH Table Per Hierarchy](#tph-table-per-hierarchy)
+   * [TPT Table Per Type](#tpt-table-per-type)
+   * [TPC Table Per Concrete Type](#tpc-table-per-concrete-type)
+* [DB Islemleri](#db-islemleri)
+* [Logging](#logging)
 * [Karýþýk Notlar](#karisik-notlar)
 
 ### DbFirst
@@ -42,6 +52,8 @@ yada <br>
 `await context.Persons.TagWith("açýklama1").TagWith("açýklama2").ToListAsync()` <br>
 yada <br>
 `await context.Persons.TagWith("açýklama1").Where(p => p.Id > 5).TagWith("açýklama2").ToListAsync()` <br>
+<br>
+`TagWithCallSite` kullanýrsan kodun dosya konumunuda verir.
 
 
 ### Global Query Filters
@@ -189,11 +201,85 @@ sequence veritabanýna baðlý identity ise tabloya baðlý. identity diskten veri al
 
 ### Eager Loading
 
-sorgunun iliþkisel diðer tablolardan eklenmesine `èager loading` denir. 
+sorgunun iliþkisel diðer tablolardan eklenmesine `eager loading` denir. PArça parça veri eklenmesini saðlar.
+`Include` veya `ThenInclude` ile eklemedir kýsaca. 
+<br>
+örneðin `A`, `B` ve `C` tablolarý olsun. A -> B -> C þeklinde baðlarý olsun. Siz `Include` ile eklerken `A`'ya `C`'yi eklemek istersen.
+```
+A.Include(x => x.B);
+A.Include(x => x.B.C);
+```
+Demenle 
+`A.Include(x => x.B.C);` bu ayný þey zaten burada `C`'ye `B` üzerinden gittiði için onuda ekler.
+þimdi burada hepsi tekil kabul ederdik ama `B`'nin içinde `C` `ICollection` þeklinde tutulsaydý bunu `ThenInclude` ile çözeriz.
+```
+A.Include(x => x.B);
+A.ThenInclude(x => x.C);
+```
+þeklinde `ThenInclude` ile bir önceki `ICollection` tipindeki `Include` iþlemine tekrar `Include` yapmayý saðlar.
+<br>
+Sorgulama süreçlernde `Include` yaparken filtreleme imkaný saðlanmaktadýr kulanýmý ise  `Include(x => x.Sýnýf.Where(Þart))` þeklinde olmakta. 
+
+her tablo sorgusunda `Include` yapýlacaksa bunu otomatik yaptýrabiliriz. 
+`modelBuilder.Entity<T>().NAvigation(e => e.eklenme).AutoInclude();`
+<br>
 
 
+### Explicit Loading
+
+[Eager Loading](#eager-loading) tüm gelen tüm  verilere ekleme yapmaktaydý. Bu yöntemde ise verilerden istenilenlere ekleme yapmayý saðlamakta. Örneðin `User` tablosundan yaþý 35 üstü olanlarýn diðer tabloda bulunan deneyim bilgilerini çekeceksen. Önce yaþý 35 üstü olan `User`'larý getirir sonra bunlara geçimiþi eklersin. Maliyeti azaltýrsýn. 
+
+```
+var emp = await context.Employees.FistOrDefaultAsync(e => e.Id == 2);
+await context.Entry(emp).Referance(e => e.Region).LoadAsync(); -> veriye ekleme yapar.
+```
+eðer `emp` tek deðil `ICollection` ise o zaman `await context.Entry(emp).Collection(e => e.Region).LoadAsync();` þeklinde ekleriz.
 
 
+### Lazy loading
+
+
+ilgili `Include` ihtiyacýnda veritabanýna sorgu yapýlýr. Bunun için `Microsoft.EntityFrameworkCore.Proxies` kütüphanesi eklenmelidir. Sonra `OnConfiguring` içinde   `optionsBuilder.UserLazyLoadingProxies();` demek gereklidir.
+Eðer proxy ler üzeriden lazy loading gerçekleþtirilecekse tablo deðiþkenleri `virtual` olarak iþaretli olmalý. 
+<br>
+Proxy desteklemeyen yerlerde manuel lazy loading yapýlabilir. `Microsoft.EntityFrameworkCore.Abstraction` kurarak `ILazyLoading` ile yaparýz. Her Entityde bir boþ bir tanede `ILAzyLoading` alan ctor açýlýr. ILazyLoading kullanýlarak referans deðerlere `get => lazyLoading.Load(this, ref yüklenecekDeðiþken);` olarak manuel beliritlir. manuel lazyloadinglerde virtual iþaretlemelere gerek yoktur. Bunun dertli yaný A ve B tablolarý arasýnda sadece A da belirtsen olmuyor A da B yi Bde A yý belirten lazým.  
+<br>
+delegate ilede LAzyLoading yapýlýr. Avantajý kütüphanelere baðýmlý deðil. Dezavantajý çok uðraþtýrýcý. Anlatmaya üþendim bakarsýn [buradan](https://learn.microsoft.com/en-us/ef/core/querying/related-data/lazy)
+<br>
+`N+1` diye bir sorun var burada. yine `A -> B -> C` þeklinde baðýmlý tablolar olsun. Sen A'dan B'yi çekersin tek sorgu ile tamam. Üzerine C'yi çektiðinde Cbir liste ise ve sen bunu Foreach içinde kullanýyorsan yada bir döngüde kullanýyorsan her döngüde tekrar sorgu atar. Örneðin 1000 tane eleman olan tablodan son 10 elemaný döngü ile ekrana basarken. `Console.WriteLinr(A.B.C.Name)` gibi bir iþlemin varsa her ekrana basmada veritabnýndan tekrar cc tablosunun elemanlarý çekilir. burada Take ile halledilir ama `LazyLoading`'de sorgulara eriþimde sorgular tekrarlanýr buda maliyetli
+
+
+### View Yapisi
+
+genelde raporlama için kullanýlýr. Hazýr sorgular gibi düþünülebilir. Boþ `migration` oluþturulur. `Up` içinde  `migrationBuilder` üzerinden `.Sql()` fonksiyonu ile içine sql komutu yazýlýr `@""` yapýsý ile çoklu satýr kullanýlabilir. Sonra `Down` içinde komutun geri silinmeside eklenmelidir ki biri database de geri gitme yaptýðýnda eklenen view silinisin. sonra migration yapýlýr. View e uygun bir `Entity` Sýnýfý yapýlýr. `DbSet` ile `contet`'e eklenir. Sonra `modelBuilder` içinde `.ToView()` ile view adý verilir. `HasNoKey` ile belirtilir.   
+
+
+### Stored Procedure
+
+View gibi buda elle eklenir. Bakmadým sonrasýna 
+
+
+### Scalar ve Inline Functions
+
+Geriye deðer döndüren sql tabanýnda çalýþan fonksiyonlara `scaler` fonksyon denir. 
+<br>
+```
+Create Function getPersonTotalPrice(@personId Int)
+    Returns Int
+As
+Begin
+    Declare @TotalPrice Int
+    Select @TotalPrice = sum(o.Price) from person p
+    Join Orders o 
+        On p.PersonId = O.PersonId
+    where p.PersonId = 3
+    return @TotalPrice
+End
+```
+þeklindeki bir sorguyu öncekiler gibi `migrations` içine direk gömeriz. `migrationsBuilder.Sql(sql sorgusu)` þeklinde hazýrlanýr. Bunu contexte tanýtmak için sql sorgusuna uyumlu bir fonksiyon tanýmlanýr. bunu modelbuilder içinde `HasDbFunction` ile tanýmlanýr. orada tanýmlamalar yapýlýr (üþendim yazmaya ihtiyaç halinde imkaný bil lazým olunca bakarýn) sorguda ise from person in context.persons where context.getperson... .tolist þeklinde yapýlýr.
+<br>
+
+Inlýne ise geriye tablo döner. geçtim buralarý tablo dönen sql fonksiyonlarýna inline fonksiyonlar deniyor ona göre araþtýr.
 
 
 
@@ -230,21 +316,50 @@ her entity için tablo oluþturur ve üst sýnýfý ile birebir iliþki oluþturur.
 Ef Core 7 de geldi. Soyut türlere tablo üretmez. Abstractlara tablo oluþturmaz yani. Fakat abstract tabloda bulunan elemanlarý somutlarýn hepsine ekler.
 bunda ise `TPT`'den daha kolay þekilde `modelbilder.entity<(Abstract olan entity)>().UseTcpMappingStrategy()`
 
+   
 
 
 
+### DB Islemleri
 
+* `BeginTrabsaction` -> context.database.begintransaction(); ile alýnarak ayarlamalar yapýlarak özelleþtirmeler yapýlabilir.
+* `CommitTransaction` -> çalýþmalarý commit eder.
+* `RollbackTransaction` -> 
+* `CanConnect` -> db ye baðlandý mý? bool türünde döner
+* `EnsureCreate` -> tasarlanan db yi veritabanýnda üretir. migration kullanmaz. 
+* `EnsureDelete` -> veritabanýný siler
+* `GenerateCreateScript` -> context ile üretilen db nin sql scriptini verir. 
+* `ExecuteSql` -> formatlanma türünde string alarak sql komutunu çalýþtýrý. Execute tipi olarak temel 3 tip add update deletedir.
+* `ExecuteSqlRaw` -> direk string alýr
+* `SqlQuery` -> artýk kullanýlmýyor. dbset üzerinden fromsql kullanýlýyor fakat eriþilebilir ama desteði yok. arada kullanýlacak select li sorgularda kullanlýr.
+* `SqlQueryRaw` -> formatsýz düz stringle çalýþaný
+* `GetMigrations` -> migrationslarý liste halinde döner 
+* `GetAppliedMigrations` -> migrationlarýn veritabanýn auygulananlarýný döndürür.
+* `GetPendingMigrations` -> uygulanmayanlarý döndürür
+* `Migrate` -> migrations larý runtime da migrate eder.
+* `OpenConnection` -> manuel db baðlantýsý açar
+* `CloseConnection` -> manuel kapatýr
+* `GetConnectionString` -> baðlantý stringini verir güvenlik için bunu program aþamasýnda almak **bana göre** mantýklý deðil
+* `GetDbConnection` -> ef corun kullandýðý ado.net in connection nesnesini verir
+* `SetDbConnection` -> buda getirileni setler
+* `ProviderName` -> db için kullanýlan nuget paketi verir.
 
+### Logging
 
+`onconfiguring` içinde `optionsBuilder.LogTo(Console.WriteLine)` þeklinde en basit hali ile efcore a loglarý konsola yaz diyorsun.
+`optionsBuilder.LogTo(message => Debug.WriteLine(message))` ile ayrý debug penceresinden görebilirisn.
+<br>
+`StreamWriter log = new("logs.txt", append: true);` sonra logto içine göm
+bunu sonra kapatmayý unutma `.EnableSensivityDatalog` böyle bir þey var verileride logluyor. ama güvenlik zafiyetidir.
+`.enabledetailerrors` ile hatalarda ayrýntýlýarý alabilirsin.
 
+<br>
 
+`microsoft.extensions.logging` gibi kütüphanelerde kullanýlarak sorgu loglarý ve diðer þeyleri özelleþtirebilriisn. 
 
+<br>
 
-
-
-
-
-
+[Query Tags](#query-tags) altarnatifidir.
 
 
 
